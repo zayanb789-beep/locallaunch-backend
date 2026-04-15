@@ -20,7 +20,7 @@ const app = express();
 const PORT = process.env.PORT || 3001;
 const client = new Anthropic({ apiKey: process.env.ANTHROPIC_API_KEY });
 
-app.use(cors());
+app.use(cors({ origin: "*", methods: ["GET", "POST"], allowedHeaders: ["Content-Type"] }));
 app.use(express.json());
 
 // ── Helper: extract text from Anthropic response content blocks ──
