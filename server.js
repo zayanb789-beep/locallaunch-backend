@@ -76,7 +76,7 @@ app.post("/api/web-opportunities", async (req, res) => {
     const response = await client.messages.create({
       model: "claude-haiku-4-5-20251001",
       max_tokens: 1500,
-      system: "Search the web and return results as pure JSON arrays only. No markdown, no backticks.",
+      system: "You must respond with ONLY a valid JSON array. No text before or after. No explanation. No markdown. Just the raw JSON array starting with [ and ending with ].",
       tools: [{ type: "web_search_20250305", name: "web_search" }],
       messages: [{
         role: "user",
