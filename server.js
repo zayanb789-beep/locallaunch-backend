@@ -43,7 +43,7 @@ app.post("/api/ai-opportunities", async (req, res) => {
   const { city = "Sugar Land", grade, interests = [], skills = [], goals = [], availability = [] } = req.body;
   try {
     const response = await client.messages.create({
-      model: "claude-sonnet-4-20250514",
+      model: "claude-haiku-4-5-20251001",
       max_tokens: 1000,
       system: "Return pure JSON arrays only. No markdown, no backticks, no explanation.",
       messages: [{
@@ -74,7 +74,7 @@ app.post("/api/web-opportunities", async (req, res) => {
   const { city = "Sugar Land", interests = [] } = req.body;
   try {
     const response = await client.messages.create({
-      model: "claude-sonnet-4-20250514",
+      model: "claude-haiku-4-5-20251001",
       max_tokens: 1500,
       system: "Search the web and return results as pure JSON arrays only. No markdown, no backticks.",
       tools: [{ type: "web_search_20250305", name: "web_search" }],
@@ -108,7 +108,7 @@ Available opportunities: ${opList}.
 Give practical, encouraging advice in 2-4 sentences.`;
   try {
     const response = await client.messages.create({
-      model: "claude-sonnet-4-20250514",
+      model: "claude-haiku-4-5-20251001",
       max_tokens: 500,
       system,
       messages
@@ -129,7 +129,7 @@ app.post("/api/insight", async (req, res) => {
   const { profile = {}, topMatches = [] } = req.body;
   try {
     const response = await client.messages.create({
-      model: "claude-sonnet-4-20250514",
+      model: "claude-haiku-4-5-20251001",
       max_tokens: 200,
       system: "You are a friendly high school career advisor. Be encouraging and specific. Keep it to 2 sentences max.",
       messages: [{
