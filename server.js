@@ -31,9 +31,13 @@ function extractText(content) {
 // ── Helper: safely parse JSON from Claude's response ──
 function safeParseJSON(raw) {
   const clean = raw.replace(/```json|```/g, "").trim();
+  const start = clean.indexOf("[");
+  const end = clean.lastIndexOf("]");
+  if (start !== -1 && end !== -1) {
+    return JSON.parse(clean.slice(start, end + 1));
+  }
   return JSON.parse(clean);
 }
-
 // ─────────────────────────────────────────
 // POST /api/ai-opportunities
 // Generates personalized AI opportunities
